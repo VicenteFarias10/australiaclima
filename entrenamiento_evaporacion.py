@@ -41,12 +41,8 @@ dtype_map = {
     'Pressure3pm': 'float32', 'Temp9am': 'float32', 'Temp3pm': 'float32',
     'Rainfall': 'float32'
 }
-print("Cargando datos de forma optimizada...")
-df = pd.read_csv(
-    'wheaterPba3Completo.csv',
-    usecols=cols_to_use,
-    dtype=dtype_map
-)
+print("Cargando datos...")
+df = pd.read_csv('wheaterPba3Completo.csv')
 # --- End of Memory Optimization ---
 
 print("Preparando datos para análisis de evaporación...")

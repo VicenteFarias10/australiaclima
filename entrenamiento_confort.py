@@ -5,12 +5,8 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
-# --- Memory Optimization ---
-cols_to_use = ['Location', 'MinTemp', 'MaxTemp', 'Humidity3pm', 'WindGustSpeed', 'Sunshine', 'Rainfall']
-dtype_map = {col: 'float32' for col in cols_to_use if col != 'Location'}
-print("Cargando datos de forma optimizada...")
-df = pd.read_csv('wheaterPba3Completo.csv', usecols=cols_to_use, dtype=dtype_map)
-# --- End of Memory Optimization ---
+print("Cargando datos...")
+df = pd.read_csv('wheaterPba3Completo.csv')
 
 print("Preparando datos para análisis de confort...")
 # Seleccionar variables relevantes para el confort

@@ -8,15 +8,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, classification_report, roc_auc_score, roc_curve, confusion_matrix
 
-# --- Memory Optimization ---
-cols_to_use = [
-    'Pressure9am', 'Pressure3pm', 'Humidity9am', 'Humidity3pm',
-    'MaxTemp', 'WindGustSpeed', 'Rainfall', 'RainTomorrow'
-]
-dtype_map = {col: 'float32' for col in cols_to_use if col not in ['RainTomorrow']}
-print("Cargando datos de forma optimizada...")
-df = pd.read_csv('wheaterPba3Completo.csv', usecols=cols_to_use, dtype=dtype_map)
-# --- End of Memory Optimization ---
+print("Cargando datos...")
+df = pd.read_csv('wheaterPba3Completo.csv')
 
 print("Preparando datos para predicción de lluvia...")
 

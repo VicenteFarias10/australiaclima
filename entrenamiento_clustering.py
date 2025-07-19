@@ -7,15 +7,8 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# --- Memory Optimization ---
-cols_to_use = [
-    'MinTemp', 'MaxTemp', 'Humidity9am', 'Humidity3pm',
-    'Rainfall', 'Evaporation', 'Location'
-]
-dtype_map = {col: 'float32' for col in cols_to_use if col != 'Location'}
-print("Cargando datos de forma optimizada...")
-df = pd.read_csv('wheaterPba3Completo.csv', usecols=cols_to_use, dtype=dtype_map)
-# --- End of Memory Optimization ---
+print("Cargando datos...")
+df = pd.read_csv('wheaterPba3Completo.csv')
 
 print("Preparando datos para clustering...")
 # Seleccionar variables para clustering

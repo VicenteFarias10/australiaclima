@@ -3,12 +3,9 @@ import numpy as np
 import joblib
 from sklearn.preprocessing import LabelEncoder
 
-# --- Memory Optimization ---
-cols_to_use = ['MaxTemp', 'Humidity3pm', 'WindGustSpeed', 'Sunshine']
-dtype_map = {col: 'float32' for col in cols_to_use}
-print("Cargando datos de forma optimizada...")
-df = pd.read_csv('wheaterPba3Completo.csv', usecols=cols_to_use, dtype=dtype_map)
-# --- End of Memory Optimization ---
+# Cargar los datos
+print("Cargando datos...")
+df = pd.read_csv('wheaterPba3Completo.csv')
 
 # Limpiar y preparar datos
 print("Preparando datos...")
