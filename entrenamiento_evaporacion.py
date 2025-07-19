@@ -25,8 +25,29 @@ class SimpleLinearRegression:
     def predict(self, X):
         return X @ self.coef_ + self.intercept_
 
-print("Cargando datos...")
-df = pd.read_csv('wheaterPba3Completo.csv')
+# --- Memory Optimization ---
+# Define only the columns needed for this script to reduce memory usage.
+cols_to_use = [
+    'Location', 'MaxTemp', 'Humidity3pm', 'Sunshine', 'Evaporation', 'MinTemp', 
+    'Humidity9am', 'WindGustSpeed', 'WindSpeed9am', 'WindSpeed3pm', 'Cloud9am', 
+    'Cloud3pm', 'Pressure9am', 'Pressure3pm', 'Temp9am', 'Temp3pm', 'Rainfall'
+]
+# Use more memory-efficient data types
+dtype_map = {
+    'MaxTemp': 'float32', 'Humidity3pm': 'float32', 'Sunshine': 'float32',
+    'Evaporation': 'float32', 'MinTemp': 'float32', 'Humidity9am': 'float32',
+    'WindGustSpeed': 'float32', 'WindSpeed9am': 'float32', 'WindSpeed3pm': 'float32',
+    'Cloud9am': 'float32', 'Cloud3pm': 'float32', 'Pressure9am': 'float32',
+    'Pressure3pm': 'float32', 'Temp9am': 'float32', 'Temp3pm': 'float32',
+    'Rainfall': 'float32'
+}
+print("Cargando datos de forma optimizada...")
+df = pd.read_csv(
+    'wheaterPba3Completo.csv',
+    usecols=cols_to_use,
+    dtype=dtype_map
+)
+# --- End of Memory Optimization ---
 
 print("Preparando datos para análisis de evaporación...")
 
