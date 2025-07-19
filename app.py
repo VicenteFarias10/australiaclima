@@ -5,6 +5,7 @@ import pandas as pd
 import joblib
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
+import time # Import the time module
 
 # --- Self-Healing Logic ---
 def check_and_train_models():
@@ -35,6 +36,8 @@ def check_and_train_models():
                 print(f"STDERR: {e.stderr}")
                 raise e # Stop the application if a script fails
         print("--- All training scripts executed successfully. ---")
+        print("--- Pausing for 2 seconds to ensure filesystem sync... ---")
+        time.sleep(2) # Add a small delay
     else:
         print("--- All models found. Skipping training. ---")
 
